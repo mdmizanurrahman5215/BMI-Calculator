@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="w-2/4 bg-[#d1c5c5] p-10 rounded-md shadow-md">
+    <div className="w-3/6 bg-[#d1c5c5] p-10 rounded-md shadow-md py-10">
       <div className="flex justify-around items-center py-6">
         <h1 className="text-2xl font-bold text-center">BMI CAR+</h1>
         <span className="text-2xl">icon</span>

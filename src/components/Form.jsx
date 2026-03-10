@@ -1,32 +1,45 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Footer from "../UI/Footer";
+import DataContext from "../context/DataContext";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-  const [age, setAge] = useState();
-  const [height, setHeight] = useState();
-  const [weight, setWeight] = useState();
-  const [gender, setGender] = useState("Male");
-  console.log(age);
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-  }
+  const { data, setData } = useContext(DataContext);
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+
+    navigate("/result");
+  };
   return (
     <div className="w-2/4 bg-[#d1c5c5] p-10 rounded-md shadow-md">
       <form action="" onSubmit={handleSubmit} className="space-y-4 py-6">
         <h3 className="text-2xl font-bold">Gender</h3>
         <div className="flex justify-between items-center">
-            {
-                 ["Male", "Female"].map((g)=>{
-                    return(
-                      <p key={g} 
-                       onClick={() => setGender(g)}
-                      className={` px-4 py-1 rounded-md  font-semibold text-2xl ${g == gender ? "bg-[#4287f5] text-white":"bg-gray-300"}`}
-                      >{g}</p>
-                    )
-                })
-            }
-     
+          {["Male", "Female"].map((g) => {
+            return (
+              <p
+                key={g}
+                onClick={() => setData({ ...data, gender: g })}
+                className={` px-4 py-1 rounded-md  font-semibold text-2xl  cursor-pointer ${g == data.gender ? "bg-[#4287f5] text-white" : "bg-gray-300"}`}
+              >
+                {g}
+              </p>
+            );
+          })}
         </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="age" className="text-2xl font-semibold">
             Age :
@@ -34,35 +47,38 @@ const Form = () => {
           <input
             type="number"
             id="age"
+            name="age"
             className=" px-4 py-2 rounded-md outline-none bg-white shadow-2xl"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
+            value={data.age}
+            onChange={(e) => handleChange(e)}
           />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="Height" className="text-2xl font-semibold">
-            Height : 0
+            Height : {data.height || 0} cm
           </label>
           <input
             type="range"
             min={0}
             max={200}
             id="Height"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
+            name="height"
+            value={data.height || 0}
+            onChange={(e) => handleChange(e)}
           />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="Weight" className="text-2xl font-semibold">
-            Weight : 0
+            Weight : {data.weight || 0} kg
           </label>
           <input
             type="range"
             min={0}
             max={200}
             id="Weight"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
+            name="weight"
+            value={data.weight || 0}
+            onChange={(e) => handleChange(e)}
           />
         </div>
 
@@ -73,7 +89,13 @@ const Form = () => {
           Calculate BMI
         </button>
       </form>
-      <Footer/>
+      <div>
+        result :{" "}
+        {data.weight && data.height
+          ? (data.weight / (data.height / 100) ** 2).toFixed(2)
+          : "0"}
+      </div>
+      <Footer />
     </div>
   );
 };
