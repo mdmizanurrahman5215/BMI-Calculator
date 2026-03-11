@@ -3,11 +3,11 @@ import { createContext, useContext, useState } from "react";
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [goalWeight, setGoalWeight] = useState("");
+  const [goalWeight, setGoalWeight] = useState(65);
   const [data, setData] = useState({
     age: "",
     height: "",
-    weight: "",
+    weight: 70,
     gender: "Male",
   });
   return (

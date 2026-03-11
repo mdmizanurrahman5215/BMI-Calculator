@@ -12,16 +12,19 @@ function App() {
 
   return (
     <>
-      <section className="bg-gray-900 h-screen flex justify-center items-center">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/form" element={<Form />} />
-            <Route path="/result" element={<Result />} />
-            <Route path="/weight-tracker" element={<WeightTracker />} />
-          </Routes>
-        </BrowserRouter>
-      </section>
+      <div className="min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300 p-4">
+        <div className="w-md mx-auto">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/form" element={<Form />} />
+              <Route path="/result" element={<Result />} />
+              <Route path="/weight-tracker" element={<WeightTracker />} />
+            </Routes>
+       
+          </BrowserRouter>
+        </div>
+      </div>
     </>
   );
 }

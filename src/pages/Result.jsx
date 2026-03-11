@@ -1,9 +1,10 @@
 
-import DataContext from "../context/DataContext";
+
 import { useNavigate } from "react-router-dom";
 import { getCategory, getHealtTips } from "../helper/helper";
 import { FaHeartbeat, FaLightbulb, FaRunning } from "react-icons/fa";
 import useWeightContext from "../context/DataContext";
+import Footer from "../UI/Footer";
 
 const Result = () => {
   const { data, setData } = useWeightContext();
@@ -28,7 +29,7 @@ const Result = () => {
   const healthTips = getHealtTips(age, gender, result);
 
   return (
-    <div className="bg-white shadow-xl rounded-xl p-6 md:p-10 max-w-xl mx-auto mt-10">
+    <div className="bg-white shadow-xl rounded-xl p-6 md:p-10 mx-auto mt-10">
 
       {/* Heading */}
       <h2 className="text-3xl font-bold text-center mb-4">
@@ -79,6 +80,7 @@ const Result = () => {
           Calculate Again
         </button>
       </div>
+       <Footer />
     </div>
   );
 };

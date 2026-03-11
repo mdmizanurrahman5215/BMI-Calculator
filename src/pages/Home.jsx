@@ -5,10 +5,9 @@ import { FaHeartbeat } from "react-icons/fa";
 
 const Home = () => {
   return (
-    <div className="w-full md:w-3/6 bg-[#d1c5c5] p-6 md:p-10 rounded-md shadow-md mx-auto">
-
+    <div className="bg-[#d1c5c5] p-4 md:p-8 rounded-md shadow-md mx-auto max-w-5xl">
       {/* Header */}
-      <div className="flex justify-between items-center py-6">
+      <div className="flex justify-between items-center py-4 md:py-6">
         <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
           <FaHeartbeat className="text-red-500" />
           BMI CAR+
@@ -17,66 +16,46 @@ const Home = () => {
       </div>
 
       {/* BMI Calculator Section */}
-      <div>
-        <h3 className="text-xl md:text-2xl font-semibold">Calculate</h3>
+      <div className="mb-6">
+        <h3 className="text-xl md:text-2xl font-semibold mb-2">Calculate</h3>
 
         <NavLink to="form">
-          <div className="w-full bg-white px-4 py-6 rounded-md shadow-md my-4 hover:shadow-xl transition cursor-pointer text-center">
-            <img
-              src="/bmi.png"
-              alt="bmi"
-              className="w-20 mx-auto mb-3"
-            />
+          <div className="w-full bg-white px-4 py-4 rounded-md shadow-md hover:shadow-xl transition transform hover:-translate-y-1 cursor-pointer text-center">
+            <img src="/bmi.png" alt="bmi" className="w-16 md:w-20 mx-auto mb-2" />
             <p className="text-lg font-semibold">BMI Calculator</p>
           </div>
         </NavLink>
       </div>
 
       {/* Nearby Section */}
-      <div>
-        <h3 className="text-xl md:text-2xl font-bold">Near By</h3>
+      <div className="mb-6">
+        <h3 className="text-xl md:text-2xl font-bold mb-2">Near By</h3>
 
-        <div className="grid grid-cols-3 gap-4 bg-white px-4 py-6 rounded-md shadow-md my-4 text-center">
-
-          <div className="hover:scale-105 transition cursor-pointer">
-            <img
-              src="/weightlifter 1.png"
-              alt="weightlifter"
-              className="w-14 mx-auto"
-            />
-            <p className="font-medium mt-2">Fitness Center</p>
-          </div>
-
-          <div className="hover:scale-105 transition cursor-pointer">
-            <img
-              src="/lotus.png"
-              alt="yoga"
-              className="w-14 mx-auto"
-            />
-            <p className="font-medium mt-2">Yoga Event</p>
-          </div>
-
-          <div className="hover:scale-105 transition cursor-pointer">
-            <img
-              src="/zumba.png"
-              alt="zumba"
-              className="w-14 mx-auto"
-            />
-            <p className="font-medium mt-2">Zumba Event</p>
-          </div>
-
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            { img: "/weightlifter 1.png", title: "Fitness Center" },
+            { img: "/lotus.png", title: "Yoga Event" },
+            { img: "/zumba.png", title: "Zumba Event" },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-md shadow-md p-3 flex flex-col items-center justify-center gap-1 hover:scale-105 transition transform cursor-pointer h-28"
+            >
+              <img src={item.img} alt={item.title} className="w-12 md:w-14 mx-auto" />
+              <p className="font-medium text-center text-sm md:text-base">{item.title}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Health News */}
-      <div>
-        <h3 className="text-xl md:text-2xl font-bold">Health News</h3>
-
-        <div className="rounded-md overflow-hidden shadow-md my-4 hover:shadow-xl transition">
+      {/* Health News Section */}
+      <div className="mb-6">
+        <h3 className="text-xl md:text-2xl font-bold mb-2">Health News</h3>
+        <div className="rounded-md overflow-hidden shadow-md hover:shadow-xl transition">
           <img
             src="/symnastics.png"
             alt="health news"
-            className="w-full object-cover"
+            className="w-full object-cover h-48 md:h-64"
           />
         </div>
       </div>

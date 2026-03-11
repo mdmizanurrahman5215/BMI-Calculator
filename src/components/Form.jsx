@@ -25,10 +25,10 @@ const Form = () => {
       : 0;
 
   return (
-    <div className="w-full md:w-2/4 bg-[#d1c5c5] p-6 md:p-10 rounded-md shadow-md mx-auto">
+    <div className="  bg-white p-6 md:p-10 rounded-md shadow-md mx-auto">
 
       {/* FORM */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 my-10  ">
 
         {/* Gender */}
         <div>
