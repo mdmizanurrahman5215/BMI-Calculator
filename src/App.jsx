@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Footer from "./UI/Footer";
 import Form from "./components/Form";
 import Result from "./pages/Result";
+import WeightTracker from "./pages/WeightTracker ";
 
 function App() {
   // const router = createBrowserRouter([])
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/form" element={<Form />} />
             <Route path="/result" element={<Result />} />
+            <Route path="/weight-tracker" element={<WeightTracker />} />
           </Routes>
         </BrowserRouter>
       </section>
