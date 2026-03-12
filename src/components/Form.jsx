@@ -1,6 +1,9 @@
 
 import Footer from "../UI/Footer";
+import { v4 as uuidv4 } from "uuid";
 
+const id = uuidv4();
+console.log(id);
 import { useNavigate } from "react-router-dom";
 import { FaMale, FaFemale } from "react-icons/fa";
 import useWeightContext from "../context/DataContext";
@@ -21,6 +24,7 @@ const Form = () => {
     const historyEntry = {
       weight: data.weight,
       date: new Date().toLocaleDateString(),
+      id: uuidv4(),
     };
     setHistory((prev) => [...prev, historyEntry]);
     navigate("/result");

@@ -10,7 +10,7 @@ export const DataProvider = ({ children }) => {
   const [data, setData] = useState({
     age: "",
     height: "",
-    weight: 70,
+    weight: "",
     gender: "Male",
   });
   const [history, setHistory] = useState(()=>{

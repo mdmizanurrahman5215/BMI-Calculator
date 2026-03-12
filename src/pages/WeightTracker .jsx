@@ -4,7 +4,7 @@ import useWeightContext from "../context/DataContext";
 import Footer from "../UI/Footer";
 
 const WeightTracker = () => {
-  const { data, goalWeight, setGoalWeight, history } = useWeightContext();
+  const { data, goalWeight, setGoalWeight, history,setHistory } = useWeightContext();
   const [tempWeight, setTempWeight] = useState("");
   let message = "";
 
@@ -27,7 +27,10 @@ const WeightTracker = () => {
   } else {
     message = "Congratulations! You've reached your goal weight!";
   }
-
+ const handleDeleteHistory = (id) => {
+  const updateHistory  = history.filter((h)=>h.id !== id)
+  setHistory(updateHistory)
+ }
   return (
     <div className="max-w-4xl mx-auto mt-10 px-4 sm:px-6 lg:px-8">
       {/* Current Weight Card */}
@@ -53,7 +56,7 @@ const WeightTracker = () => {
             onClick={handleButtonClick}
             className="bg-purple-600 font-semibold text-white px-6 py-2 rounded-md hover:bg-purple-700"
           >
-            {goalWeight ? "Edit Goal" : "Set Goal"}
+             Set Goal
           </button>
         </div>
         <div className="flex items-center gap-3 justify-center">
@@ -98,15 +101,20 @@ const WeightTracker = () => {
       {/* Weight History */}
       <div className="bg-white rounded-xl shadow-md p-6 mb-10">
         <h3 className="text-xl font-semibold mb-4">Weight History</h3>
-        <ul className="space-y-3">
+        <ul className="space-y-3 max-h-50 border overflow-hidden overflow-y-auto p-3 rounded-md border-gray-300">
          {
             history.length > 0 ? (
               history.map((h)=>{
-                const { weight, date } =h
+                const { weight, date, id } =h
                 return (
-                  <li key={date} className="flex justify-between bg-gray-100 p-3 rounded-lg">
-                    <span>{date}</span>
+                  <li key={id} className="flex justify-between bg-gray-100 p-3 rounded-lg">
+                    <div className=" flex justify-between w-full ">
+                      <span>{date}</span>
                     <span className="font-semibold">{weight} kg</span>
+                    </div>
+                    <button className="text-red-500 hover:text-red-700 ml-4 font-bold" onClick={() => handleDeleteHistory(id)}>
+                      Delete
+                    </button>
                   </li>
                 )
               })
