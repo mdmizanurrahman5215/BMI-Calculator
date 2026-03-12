@@ -1,21 +1,28 @@
 
 import Footer from "../UI/Footer";
-import DataContext from "../context/DataContext";
+
 import { useNavigate } from "react-router-dom";
 import { FaMale, FaFemale } from "react-icons/fa";
 import useWeightContext from "../context/DataContext";
 
 const Form = () => {
-  const { data, setData } = useWeightContext();
+  const { data, setData, setHistory } = useWeightContext();
+  console.log(data);
+  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setData((prev) => ({ ...prev, [name]: value }));
+    setData((prev) => ({ ...prev, [name]: value , date: new Date().toLocaleDateString()}));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const historyEntry = {
+      weight: data.weight,
+      date: new Date().toLocaleDateString(),
+    };
+    setHistory((prev) => [...prev, historyEntry]);
     navigate("/result");
   };
 

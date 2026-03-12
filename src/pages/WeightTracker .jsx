@@ -4,7 +4,7 @@ import useWeightContext from "../context/DataContext";
 import Footer from "../UI/Footer";
 
 const WeightTracker = () => {
-  const { data, goalWeight, setGoalWeight } = useWeightContext();
+  const { data, goalWeight, setGoalWeight, history } = useWeightContext();
   const [tempWeight, setTempWeight] = useState("");
   let message = "";
 
@@ -99,18 +99,19 @@ const WeightTracker = () => {
       <div className="bg-white rounded-xl shadow-md p-6 mb-10">
         <h3 className="text-xl font-semibold mb-4">Weight History</h3>
         <ul className="space-y-3">
-          <li className="flex justify-between bg-gray-100 p-3 rounded-lg">
-            <span>10 Mar 2026</span>
-            <span className="font-semibold">72 kg</span>
-          </li>
-          <li className="flex justify-between bg-gray-100 p-3 rounded-lg">
-            <span>5 Mar 2026</span>
-            <span className="font-semibold">73 kg</span>
-          </li>
-          <li className="flex justify-between bg-gray-100 p-3 rounded-lg">
-            <span>1 Mar 2026</span>
-            <span className="font-semibold">74 kg</span>
-          </li>
+         {
+            history.length > 0 ? (
+              history.map((h)=>{
+                const { weight, date } =h
+                return (
+                  <li key={date} className="flex justify-between bg-gray-100 p-3 rounded-lg">
+                    <span>{date}</span>
+                    <span className="font-semibold">{weight} kg</span>
+                  </li>
+                )
+              })
+            ) : <p className="text-gray-500">No weight history available.</p>
+         }
         </ul>
       </div>
 
