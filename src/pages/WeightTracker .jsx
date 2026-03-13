@@ -32,7 +32,7 @@ const WeightTracker = () => {
   setHistory(updateHistory)
  }
   return (
-    <div className="max-w-4xl mx-auto mt-10 px-4 sm:px-6 lg:px-8">
+    <div className="bg-white max-w-4xl mx-auto mt-10  rounded-md py-6">
       {/* Current Weight Card */}
       <div className="bg-white rounded-xl shadow-md p-6 mb-6 text-center">
         <h2 className="text-lg font-semibold text-gray-500">Current Weight</h2>

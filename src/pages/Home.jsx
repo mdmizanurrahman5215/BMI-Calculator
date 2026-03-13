@@ -5,7 +5,7 @@ import { FaHeartbeat } from "react-icons/fa";
 
 const Home = () => {
   return (
-    <div className="bg-[#d1c5c5] p-4 md:p-8 rounded-md shadow-md mx-auto max-w-5xl">
+    <div className="bg-white p-4 md:p-8 rounded-md shadow-md mx-auto max-w-5xl">
       {/* Header */}
       <div className="flex justify-between items-center py-4 md:py-6">
         <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">

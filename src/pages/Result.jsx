@@ -71,7 +71,7 @@ const Result = () => {
       </div>
 
       {/* Action Button */}
-      <div className="flex justify-center mt-8">
+      <div className="flex justify-center mt-8 ">
         <button
           onClick={handleReset}
           className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg text-lg font-semibold transition"
